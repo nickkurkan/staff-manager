@@ -1,0 +1,105 @@
+$bg: #d8eefe
+$bg-card: #fffffe
+
+$title-color: #094067
+$text-color: #5f6c7b
+
+$primary: #3da9fc
+
+$btn-primary: linear-gradient(to right, #3da9fc, #009aff, #0089ff, #0077ff, #0063ff)
+
+$border-color: #094067
+
+$title-fz: 3rem
+$subtitle-fz: 1.5rem
+$headline-fz: 1.5rem
+$text-fz: 1rem
+$btn-fz: 1.25rem
+    
+body
+  width: 100vw
+  height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+  font-family: 'Ubuntu', sans-serif
+  background: $bg
+
+h1, h2, h3
+  margin-bottom: 1rem
+  color: $title-color
+
+h1
+  margin-bottom: 1.5rem
+  font-size: $title-fz
+  font-weight: bold
+
+h2
+  font-size: $subtitle-fz
+  font-weight: bold
+
+h3
+  font-size: $headline-fz
+
+p
+  margin-bottom: $text-fz
+  font-size: $text-fz
+  color: $text-color
+
+input
+  width: 200px
+  margin-bottom: $text-fz
+  padding: 0.75rem
+  border: 2px solid $border-color
+  border-radius: 10px 
+  font-size: $text-fz
+  font-weight: 500
+  color: $text-color
+  box-shadow: inset 0 0 1rem rgba(0, 0, 0, 0.125)
+  transition: border-color .3s
+  &:focus
+    outline: none
+    border-color: $primary
+
+.btn
+  margin-bottom: $text-fz
+  padding: 1rem
+  border: none
+  border-radius: 10px 
+  font-size: $btn-fz
+  font-weight: bold
+  color: $bg-card
+  cursor: pointer
+  transition: box-shadow .3s
+  &:focus
+    outline: none
+  &:hover
+    box-shadow: 0 0 1rem $primary
+
+  &__primary
+    background: $btn-primary
+
+form
+  display: flex
+  flex-direction: column
+  p
+    color: $title-color
+    font-weight: 500
+  button:last-of-type
+    margin-bottom: 0
+
+.container
+  display: flex
+  justify-content: center
+  align-items: flex-start
+  flex-wrap: wrap
+
+.card
+  padding: 25px
+  background: $bg-card
+  border-radius: 10px 
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.125)
+
+  &__primary
+    background: $bg
+    box-shadow: none
