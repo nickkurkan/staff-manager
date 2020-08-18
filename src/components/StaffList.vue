@@ -1,13 +1,18 @@
 <template>
   <div class="card">
     <h2>Staff List</h2>
-    <Employee name="John Doe" position="CEO" email="johndoe@mail.com" phone="+380 63 123 45 67"></Employee>
+    <Employee v-for="employee in staff" :key="employee.name" :name="employee.name" :position="employee.position" :email="employee.email" :phone="employee.phone"></Employee>
   </div>
 </template>
 
 <script>
 import Employee from './Employee'
 export default {
+  computed: {
+    staff() {
+      return this.$store.state.staff
+    }
+  },
   components: {
     'Employee': Employee
   }
