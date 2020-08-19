@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+  <div class="main">
+    <div class="container">
     <div class="row">
       <h1>Staff Manager</h1>
     </div>
@@ -7,6 +8,7 @@
       <StaffForm></StaffForm>
       <StaffList></StaffList>
     </div>
+  </div>
   </div>
 </template>
 
@@ -22,9 +24,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.main
+  padding: 50px 0
 .row
   justify-content: center
-
-h1
-  margin-top: 50px
 </style>

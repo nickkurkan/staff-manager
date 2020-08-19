@@ -2,7 +2,7 @@
   <div class="staff-form">
     <div class="card">
       <h2>Add employee</h2>
-      <form @submit.prevent="checkForm" novalidate="true">
+      <form @submit.prevent="addOrEditEmployee" novalidate="true">
         <p>Full name</p>
         <input type="text" v-model.trim="employeeData.name" />
         <p
@@ -25,14 +25,9 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 export default {
   data: () => ({
-    employeeData: {
-      name: "Nick K",
-      position: "Cheaf",
-      email: "test@test.com",
-      phone: "380111111111",
-    },
     errors: {
       name: false,
       position: false,
@@ -40,9 +35,52 @@ export default {
       phone: false,
     },
   }),
+  computed: mapState({
+    formMode: "formMode",
+    edEmp: "edEmp",
+    employeeData() {
+      if (this.formMode) {
+        return {
+          name: "",
+          position: "",
+          email: "",
+          phone: "",
+          // name: "Nick K",
+          // position: "Cheaf",
+          // email: "test@test.com",
+          // phone: "380111111111",
+        };
+      } else {
+        return {
+          name: this.edEmp.name,
+          position: this.edEmp.position,
+          email: this.edEmp.email,
+          phone: this.edEmp.phone,
+        };
+      }
+    },
+  }),
   methods: {
+    ...mapActions({
+      add: "addEmployee",
+      edit: "editEmployee",
+      addMode: "addMode",
+    }),
+    addOrEditEmployee() {
+      let action = this.formMode ? this.addEmployee : this.editEmployee;
+      action();
+    },
     addEmployee() {
-      this.$store.dispatch("addEmployee", this.employeeData);
+      if (this.checkForm()) {
+        this.add(this.employeeData);
+        this.clearForm();
+      }
+    },
+    editEmployee() {
+      if (this.checkForm()) {
+        this.edit(this.employeeData);
+        this.clearForm();
+      }
     },
     checkForm() {
       this.validName(this.employeeData.name);
@@ -55,23 +93,27 @@ export default {
       for (let error in this.errors) {
         if (this.errors[error]) {
           validPass = false;
-          console.log(validPass);
-          break
+          break;
         } else {
           validPass = true;
         }
       }
 
-      if (validPass) {
-        this.$store.dispatch('addEmployee', this.employeeData)
-      }
+      return validPass;
+    },
+    clearForm() {
+      this.employeeData.name = "";
+      this.employeeData.position = "";
+      this.employeeData.email = "";
+      this.employeeData.phone = "";
+      this.addMode();
     },
     validName(name) {
       let re = /^(([A-za-zА-яа-я]+[\s]{1}[A-za-zА-яа-я]+))$/g;
       this.errors.name = re.test(name) ? false : true;
     },
     validPosition(position) {
-      let re = /^[A-za-zА-яа-я]{5,30}$/g;
+      let re = /^[A-za-zА-яа-я\s]{5,30}$/g;
       this.errors.position = re.test(position) ? false : true;
     },
     validEmail(email) {

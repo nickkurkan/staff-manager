@@ -8,23 +8,31 @@ export default new Vuex.Store({
     staff: [
       {
         name: 'Nick Fury',
-        position: 'CEO',
+        position: 'Cheaf',
         email: 'nickfury@mail.com',
-        phone: '+380 63 123 45 67',
+        phone: '+380631234567',
       },
       {
         name: 'James Bond',
-        position: 'CTO',
+        position: 'Cheaf',
         email: 'jamesbond@mail.com',
-        phone: '+380 63 123 45 67',
+        phone: '+380631234567',
       },
       {
         name: 'Luke Skywalker',
-        position: 'CCO',
+        position: 'Cheaf',
         email: 'lukeskywalker@mail.com',
-        phone: '+380 63 123 45 67',
+        phone: '+380631234567',
       },
     ],
+    formMode: true,
+    edEmp: {
+      name: '',
+      position: '',
+      email: '',
+      phone: '',
+    },
+    edEmpId: '',
   },
   mutations: {
     addEmployee(state, employee) {
@@ -32,19 +40,42 @@ export default new Vuex.Store({
         name: employee.name,
         position: employee.position,
         email: employee.email,
-        phone: employee.phone
-      })
+        phone: employee.phone,
+      });
     },
     deleteEmployee(state, id) {
-      state.staff.splice(id, 1)
+      state.staff.splice(id, 1);
+    },
+    editEmployee(state, employee) {
+      state.staff[state.edEmpId].name = employee.name;
+      state.staff[state.edEmpId].position = employee.position;
+      state.staff[state.edEmpId].email = employee.email;
+      state.staff[state.edEmpId].phone = employee.phone;
+    },
+    editMode(state, { id, employee }) {
+      state.formMode = false;
+      state.edEmpId = id;
+      state.edEmp = employee;
+    },
+    addMode(state) {
+      state.formMode = true;
     }
   },
   actions: {
-    addEmployee({commit}, employee) {
-      commit('addEmployee', employee)
+    addEmployee({ commit }, employee) {
+      commit('addEmployee', employee);
     },
-    deleteEmployee({commit}, id) {
-      commit('deleteEmployee', id)
+    deleteEmployee({ commit }, id) {
+      commit('deleteEmployee', id);
+    },
+    editEmployee({ commit }, employee) {
+      commit('editEmployee', employee);
+    },
+    editMode({ commit }, { id, employee }) {
+      commit('editMode', { id, employee });
+    },
+    addMode({commit}) {
+      commit('addMode')
     }
   },
   modules: {},

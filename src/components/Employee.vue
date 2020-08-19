@@ -4,7 +4,7 @@
       <div class="wrap">
         <h3 class="employee_name">{{name}}</h3>
         <div class="employee_actions">
-          <button class="employee_edit btn-icon">
+          <button class="employee_edit btn-icon" @click="editThisEmployee">
             <svg
               width="24"
               height="24"
@@ -55,9 +55,20 @@ export default {
   },
   methods: {
     deleteThisEmployee() {
-      this.$store.dispatch('deleteEmployee', this.id)     
-    }
-  }
+      this.$store.dispatch("deleteEmployee", this.id);
+    },
+    editThisEmployee() {
+      this.$store.dispatch("editMode", {
+        id: this.id,
+        employee: {
+          name: this.name,
+          position: this.position,
+          email: this.email,
+          phone: this.phone,
+        },
+      });
+    },
+  },
 };
 </script>
 
