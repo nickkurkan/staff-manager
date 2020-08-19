@@ -26,7 +26,21 @@ export default new Vuex.Store({
       },
     ],
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    addEmployee(state, employee) {
+      state.staff.push(employee)
+    },
+    deleteEmployee(state, id) {
+      state.staff.splice(id, 1)
+    }
+  },
+  actions: {
+    addEmployee({commit}, employee) {
+      commit('addEmployee', employee)
+    },
+    deleteEmployee({commit}, id) {
+      commit('deleteEmployee', id)
+    }
+  },
   modules: {},
 });

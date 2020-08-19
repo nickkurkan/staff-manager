@@ -1,7 +1,7 @@
 <template>
-  <div class="card">
-    <h2>Staff List</h2>
-    <Employee v-for="employee in staff" :key="employee.name" :name="employee.name" :position="employee.position" :email="employee.email" :phone="employee.phone"></Employee>
+  <div class="staff-list card">
+    <h2 class="staff-list_title">Staff List</h2>
+    <Employee v-for="(employee, id) in staff" :key="employee.name" v-bind="employee" :id="id"></Employee>
   </div>
 </template>
 
@@ -20,4 +20,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.staff-list
+  width: 50%
 </style>

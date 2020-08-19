@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="staff-form card">
     <h2>Add employee</h2>
     <form>
       <p>Full name</p>
@@ -20,6 +20,7 @@ export default {};
 </script>
 
 <style lang="sass" scoped>
-.card
-  margin-right: 50px
+.staff-form
+  width: 25%
+  margin-right: 5%
 </style>

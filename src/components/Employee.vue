@@ -13,16 +13,14 @@
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M14.9833 5.48122L3.66957 16.7949L3.42466 19.4889C3.36812 20.1109 3.88915 20.6319 4.51109 20.5754L7.2051 20.3304L18.5188 9.01675L14.9833 5.48122Z"
-                fill="#2E3A59"
-              />
-              <path
-                d="M19.2259 8.30964L21.3472 6.18831C21.7378 5.79778 21.7378 5.16462 21.3472 4.77409L19.2259 2.65277C18.8354 2.26225 18.2022 2.26225 17.8117 2.65277L15.6904 4.77411L19.2259 8.30964Z"
-                fill="#2E3A59"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M21 20C21.5523 20 22 20.4477 22 21C22 21.5523 21.5523 22 21 22H3C2.44772 22 2 21.5523 2 21C2 20.4477 2.44772 20 3 20H21ZM6.29289 13.2929L17.2929 2.29289C17.6534 1.93241 18.2206 1.90468 18.6129 2.2097L18.7071 2.29289L21.7071 5.29289C22.0676 5.65338 22.0953 6.22061 21.7903 6.6129L21.7071 6.70711L10.7071 17.7071C10.5508 17.8634 10.3481 17.9626 10.1314 17.9913L10 18H7C6.48716 18 6.06449 17.614 6.00673 17.1166L6 17V14C6 13.779 6.07316 13.5655 6.20608 13.392L6.29289 13.2929L17.2929 2.29289L6.29289 13.2929ZM18 4.41421L8 14.4142V16H9.58579L19.5858 6L18 4.41421Z"
+                fill="black"
               />
             </svg>
           </button>
-          <button class="employee_delete btn-icon">
+          <button class="employee_delete btn-icon" @click="deleteThisEmployee">
             <svg
               width="24"
               height="24"
@@ -31,18 +29,17 @@
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
-                fill="#2E3A59"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M17 8C17.5523 8 18 8.44772 18 9V19C18 20.6569 16.6569 22 15 22H9C7.34315 22 6 20.6569 6 19V9C6 8.44772 6.44772 8 7 8H17ZM16 10H8V19C8 19.5523 8.44772 20 9 20H15C15.5523 20 16 19.5523 16 19V10ZM9 3C9 2.44772 9.44772 2 10 2H14C14.5523 2 15 2.44772 15 3V4H19C19.5523 4 20 4.44772 20 5C20 5.55228 19.5523 6 19 6H5C4.44772 6 4 5.55228 4 5C4 4.44772 4.44772 4 5 4H9V3Z"
+                fill="black"
               />
             </svg>
           </button>
         </div>
       </div>
       <p class="employee_position">{{position}}</p>
-      <p class="employee_contacts">
-        <span class="employee_email">{{email}} |</span>
-        <span class="employee_phone">{{phone}}</span>
-      </p>
+      <p class="employee_contacts">{{email}} | {{phone}}</p>
     </div>
   </div>
 </template>
@@ -54,7 +51,13 @@ export default {
     position: String,
     email: String,
     phone: String,
+    id: Number,
   },
+  methods: {
+    deleteThisEmployee() {
+      this.$store.dispatch('deleteEmployee', this.id)     
+    }
+  }
 };
 </script>
 
@@ -70,7 +73,7 @@ export default {
     display: flex
     justify-content: space-between
     align-items: flex-start
-  &_edit 
+  &_edit
     margin-right: 1rem
   &_contacts
     margin-bottom: 0

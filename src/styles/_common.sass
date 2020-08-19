@@ -6,8 +6,6 @@ $text-color: #5f6c7b
 
 $primary: #3da9fc
 
-$btn-primary: linear-gradient(to right, #3da9fc, #009aff, #0089ff, #0077ff, #0063ff)
-
 $border-color: #094067
 
 $title-fz: 3rem
@@ -47,7 +45,6 @@ p
   color: $text-color
 
 input
-  width: 200px
   margin-bottom: $text-fz
   padding: 0.75rem
   border: 2px solid $border-color
@@ -77,23 +74,22 @@ input
     box-shadow: 0 0 1rem $primary
 
   &__primary
-    background: $btn-primary
-  &-icon
-    width: 24px
-    height: 24px
-    padding: 0
-    background: transparent
-    border: none
-    cursor: pointer
-    svg
-      path
-        fill: $text-color
-        transition: fill .3s ease
-      &:hover
-        path
-          fill: $title-color
-    &:focus
-      outline: none
+    background: $primary
+
+.btn-icon
+  padding: 0
+  background: transparent
+  border: none
+  cursor: pointer
+  svg
+    path
+      fill: $text-color
+      transition: fill .3s ease
+  svg:hover
+    path
+      fill: $primary
+  &:focus
+    outline: none
 
 form
   display: flex
