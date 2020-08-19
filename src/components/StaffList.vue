@@ -22,4 +22,7 @@ export default {
 <style lang="sass" scoped>
 .staff-list
   width: 50%
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
 </style>

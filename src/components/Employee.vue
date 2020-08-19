@@ -2,7 +2,7 @@
   <div class="card card__primary">
     <div class="employee">
       <div class="wrap">
-        <h3 class="employee_name">{{name}}</h3>
+        <h2 class="employee_name">{{name}}</h2>
         <div class="employee_actions">
           <button class="employee_edit btn-icon">
             <svg
