@@ -28,7 +28,12 @@ export default new Vuex.Store({
   },
   mutations: {
     addEmployee(state, employee) {
-      state.staff.push(employee)
+      state.staff.push({
+        name: employee.name,
+        position: employee.position,
+        email: employee.email,
+        phone: employee.phone
+      })
     },
     deleteEmployee(state, id) {
       state.staff.splice(id, 1)

@@ -2,7 +2,7 @@
   <div class="card card__primary">
     <div class="employee">
       <div class="wrap">
-        <h2 class="employee_name">{{name}}</h2>
+        <h3 class="employee_name">{{name}}</h3>
         <div class="employee_actions">
           <button class="employee_edit btn-icon">
             <svg
@@ -75,6 +75,8 @@ export default {
     align-items: flex-start
   &_edit
     margin-right: 1rem
+  &_position
+    font-weight: 500
   &_contacts
     margin-bottom: 0
 </style>

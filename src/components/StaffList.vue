@@ -1,7 +1,9 @@
 <template>
-  <div class="staff-list card">
-    <h2 class="staff-list_title">Staff List</h2>
-    <Employee v-for="(employee, id) in staff" :key="employee.name" v-bind="employee" :id="id"></Employee>
+  <div class="staff-list">
+    <div class="card">
+      <h2 class="staff-list_title">Staff List</h2>
+      <Employee v-for="(employee, id) in staff" :key="id" v-bind="employee" :id="id"></Employee>
+    </div>
   </div>
 </template>
 
@@ -14,7 +16,7 @@ export default {
     }
   },
   components: {
-    'Employee': Employee
+    Employee
   }
 };
 </script>
