@@ -28,4 +28,8 @@ export default {
   padding: 50px 0
 .row
   justify-content: center
+
+@media screen and (max-width: 768px)
+  .main
+    padding: 25px 0
 </style>

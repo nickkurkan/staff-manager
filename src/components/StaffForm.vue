@@ -1,7 +1,8 @@
 <template>
   <div class="staff-form">
     <div class="card">
-      <h2>Add employee</h2>
+      <h2 v-if="formMode">Add employee</h2>
+      <h2 v-else>Edit employee</h2>
       <form @submit.prevent="addOrEditEmployee" novalidate="true">
         <p>Full name</p>
         <input type="text" v-model.trim="employeeData.name" />
@@ -135,4 +136,14 @@ export default {
   margin-right: 5%
   position: sticky
   top: 2rem
+
+@media screen and (max-width: 1024px)
+  .staff-form
+    width: 35%
+
+@media screen and (max-width: 576px)
+  .staff-form
+    width: 100%
+    margin: 0 10px 5% 10px
+    position: static
 </style>

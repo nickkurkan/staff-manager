@@ -27,4 +27,14 @@ export default {
   display: flex
   flex-direction: column
   justify-content: flex-start
+
+@media screen and (max-width: 1024px)
+  .staff-list
+    width: 60%
+
+@media screen and (max-width: 576px)
+  .staff-list
+    width: 100%
+    margin: 0 10px 5% 10px
+    position: static
 </style>
